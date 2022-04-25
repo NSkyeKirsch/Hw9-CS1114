@@ -21,7 +21,7 @@ def get_nucleotide_frequencies(nucleotides):
 
     for chr in nucleotides:
         if chr != "A" and chr != "C" and chr != "G" and chr != "T":
-            final_dict['Junk'].setdefault(chr, nucleotides.count(chr))
+            final_dict['Junk'].update({chr: nucleotides.count(chr)})
 
     return final_dict
 
