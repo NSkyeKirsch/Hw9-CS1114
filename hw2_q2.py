@@ -49,7 +49,7 @@ def create_pokedex(filepath):
 def main():
     filepath = "pokemon.csv"
     pokedex = create_pokedex(filepath)
-    pokemon_key = "Glaceon"
+    pokemon_key = "Charizard"
 
     try:
         my_favorite_pokemon = pokedex[pokemon_key]
