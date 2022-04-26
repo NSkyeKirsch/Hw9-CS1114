@@ -23,15 +23,43 @@ def create_entry(number, name, type_1, type_2, health_points, attack, defense, s
 
     return poke_dict
 
+def create_pokedex(filepath):
+
+    dex_dict = {}
+
+    try:
+        file = open(filepath, 'r')
+    except FileNotFoundError:
+        return dex_dict
+
+    file.readline()
+
+    x = 0
+    for line in file:
+        entry = line.strip().split(',')
+        dex_dict[entry[1]] = create_entry(entry[0], entry[1], entry[2], entry[3], entry[5], entry[6], entry[7], entry[8], entry[9], entry[10], entry[11], entry[12])
+
+    file.close()
+
+    return dex_dict
+
+
 
 
 def main():
-    a_random_pokemon = create_entry(81, "Magnemite", "Electric", "Steel", 25, 35, 70, 95, 55, 45, 1, False)
-    for key in a_random_pokemon.keys():
-        print("{}: {}".format(key, a_random_pokemon[key]))
+    filepath = "pokemon.csv"
+    pokedex = create_pokedex(filepath)
+    pokemon_key = "Glaceon"
 
+    try:
+        my_favorite_pokemon = pokedex[pokemon_key]
+    except KeyError:
+        print("ERROR: Pokemon {} does not exist!".format(pokemon_key))
+    else:
+        print("PRINTING {}'S INFORMATION..." .format(pokemon_key))
+        for key in my_favorite_pokemon.keys():
+            print("{}: {}".format(key, my_favorite_pokemon[key]))
 main()
-
 
 
 
