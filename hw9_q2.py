@@ -34,7 +34,6 @@ def create_pokedex(filepath):
 
     file.readline()
 
-    x = 0
     for line in file:
         entry = line.strip().split(',')
         dex_dict[entry[1]] = create_entry(entry[0], entry[1], entry[2], entry[3], entry[5], entry[6], entry[7], entry[8], entry[9], entry[10], entry[11], entry[12])
